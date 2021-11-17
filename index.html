@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>todoList</title>
     <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
     <div id="app">
@@ -12,14 +18,17 @@
         <h1>تودو لیست</h1>
         <input type="text" placeholder="تودو" dir="rtl" v-model.trim="input" />
         <button class="addBtn" @click="addTodo">اضافه کردن به لیست</button>
+        <a href="https://github.com/mohaddeseamel/todoList-Vue">
+          لینک گیت هاب<i class="fab fa-github"></i>
+        </a>
       </div>
       <ul>
-        <todo-item 
-        v-for="(todo , index) in todos"
-        :key="todo.text"
-        :todo="todo"
-        @checked="todo.completed = !todo.completed"
-        @todo-deleted ="deleteTodo(index)"
+        <todo-item
+          v-for="(todo , index) in todos"
+          :key="todo.text"
+          :todo="todo"
+          @checked="todo.completed = !todo.completed"
+          @todo-deleted="deleteTodo(index)"
         ></todo-item>
       </ul>
     </div>
@@ -27,7 +36,7 @@
     <script src="https://unpkg.com/vue@next"></script>
 
     <script>
-     const app = Vue.createApp({
+      const app = Vue.createApp({
         data() {
           return {
             input: "",
@@ -45,14 +54,14 @@
               this.input = "";
             }
           },
-          deleteTodo(index){
-              this.todos.splice(index , 1)
-          }
+          deleteTodo(index) {
+            this.todos.splice(index, 1);
+          },
         },
       });
 
-      app.component('TodoItem',{
-        template:`
+      app.component("TodoItem", {
+        template: `
         <li
         @click = "$emit('checked')"
         :class="{'checked':todo.completed}"
@@ -60,8 +69,7 @@
           {{todo.text}}<button class="close" @click="$emit('todo-deleted')">X</button>
         </li>
         `,
-         props:['todo']
-        
+        props: ["todo"],
       });
 
       app.mount("#app");

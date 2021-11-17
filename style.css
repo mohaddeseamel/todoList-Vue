@@ -104,8 +104,17 @@ body {
     border-radius: 0;
     border: none;
     height: 42px;
+    margin-bottom: 10px;
   }
   
   .addBtn:hover {
     background-color: #bbb;
+  }
+ .header a{
+      color: white;
+      font-size: 20px;
+      text-decoration: none;
+  }
+  .header i{
+      margin-left: 5px;
   }
